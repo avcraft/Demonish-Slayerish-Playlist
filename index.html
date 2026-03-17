@@ -2,39 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demon Slayer Music Player</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Demon Slayer Music</title>
     <link rel="stylesheet" href="style.css" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
   </head>
   <body>
-    <div class="player-container">
-      <div class="header-pattern"></div>
+    <div class="app-shell">
+      <div class="shoji-screen"></div>
+      <div class="lantern-glow"></div>
 
-      <div class="album-art" id="art">⛩️</div>
-
-      <div class="now-playing">
-        <h2 id="songTitle">Select a Scroll</h2>
-        <p id="artistName">Breathing Style: Music</p>
+      <div class="embers-container">
+        <div class="ember"></div>
+        <div class="ember"></div>
+        <div class="ember"></div>
+        <div class="ember"></div>
+        <div class="ember"></div>
+        <div class="ember"></div>
       </div>
 
-      <div class="progress-container">
-        <input type="range" id="progress" value="0" max="100" />
-      </div>
+      <div class="player-card">
+        <div class="header-pattern"></div>
 
-      <div class="controls">
-        <button onclick="prevSong()">⏮</button>
-        <button id="playBtn" onclick="togglePlay()">▶</button>
-        <button onclick="nextSong()">⏭</button>
-      </div>
+        <div class="main-content">
+          <div class="album-art-wrapper">
+            <div class="album-art" id="art">⚔️</div>
+            <div class="art-ring"></div>
+          </div>
 
-      <div class="upload-section">
-        <label for="fileInput" class="upload-label">🏮 ADD TO SCROLL</label>
-        <input type="file" id="fileInput" accept="audio/*" multiple />
-      </div>
+          <div class="info">
+            <h2 id="songTitle">Empty Scroll</h2>
+            <p id="artistName">Select Your Breathing Style</p>
+          </div>
 
-      <div class="playlist-container">
-        <h3>Song Scroll</h3>
-        <ul id="playlistList"></ul>
+          <div class="progress-box">
+            <input type="range" id="progress" value="0" />
+          </div>
+
+          <div class="controls">
+            <button class="side-btn" onclick="prevSong()">⏮</button>
+            <button id="playBtn" class="play-btn" onclick="togglePlay()">
+              ▶
+            </button>
+            <button class="side-btn" onclick="nextSong()">⏭</button>
+          </div>
+
+          <div class="actions">
+            <label for="fileInput" class="upload-btn">🍱 LOAD SCROLLS</label>
+            <input type="file" id="fileInput" accept="audio/*" multiple />
+          </div>
+
+          <div class="playlist-section">
+            <ul id="playlistList"></ul>
+          </div>
+        </div>
       </div>
     </div>
 
