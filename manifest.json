@@ -1,10 +1,10 @@
 {
-  "name": "Slayer Music Player",
-  "short_name": "SlayerApp",
+  "name": "AV Music Slayer",
+  "short_name": "AV Slayer",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#b38b59",
+  "theme_color": "#121212",
   "icons": [
     {
       "src": "images/av-icon.png",
