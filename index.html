@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demon Slayer Music Player</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="player-container">
+      <div class="header-pattern"></div>
+
+      <div class="album-art" id="art">⛩️</div>
+
+      <div class="now-playing">
+        <h2 id="songTitle">Select a Scroll</h2>
+        <p id="artistName">Breathing Style: Music</p>
+      </div>
+
+      <div class="progress-container">
+        <input type="range" id="progress" value="0" max="100" />
+      </div>
+
+      <div class="controls">
+        <button onclick="prevSong()">⏮</button>
+        <button id="playBtn" onclick="togglePlay()">▶</button>
+        <button onclick="nextSong()">⏭</button>
+      </div>
+
+      <div class="upload-section">
+        <label for="fileInput" class="upload-label">🏮 ADD TO SCROLL</label>
+        <input type="file" id="fileInput" accept="audio/*" multiple />
+      </div>
+
+      <div class="playlist-container">
+        <h3>Song Scroll</h3>
+        <ul id="playlistList"></ul>
+      </div>
+    </div>
+
+    <audio id="audioSource"></audio>
+    <script src="script.js"></script>
+  </body>
+</html>

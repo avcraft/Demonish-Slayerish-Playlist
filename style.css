@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Georgia", serif;
+}
+
+body {
+  background-color: #1a1a1a;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://www.transparenttextures.com/patterns/dark-wood.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.player-container {
+  background: #232323;
+  width: 350px;
+  border-radius: 15px;
+  border: 3px solid #b38b59;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+/* Tanjiro's Pattern */
+.header-pattern {
+  height: 50px;
+  background-color: #00b894;
+  background-image:
+    linear-gradient(45deg, #000 25%, transparent 25%),
+    linear-gradient(-45deg, #000 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #000 75%),
+    linear-gradient(-45deg, transparent 75%, #000 75%);
+  background-size: 40px 40px;
+  background-position:
+    0 0,
+    0 20px,
+    20px 20px,
+    20px 0;
+  border-bottom: 2px solid #b38b59;
+}
+
+.album-art {
+  width: 120px;
+  height: 120px;
+  background: #1a1a1a;
+  margin: 25px auto 15px;
+  border-radius: 50%;
+  border: 4px solid #b38b59;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  box-shadow: 0 0 20px rgba(179, 139, 89, 0.3);
+}
+
+h2 {
+  color: #fab1a0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+p {
+  color: #b38b59;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  cursor: pointer;
+  color: #55efc4;
+  margin: 0 10px;
+  transition: 0.2s;
+}
+
+.controls button:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+#progress {
+  width: 80%;
+  margin-bottom: 15px;
+  accent-color: #d63031;
+  cursor: pointer;
+}
+
+/* Styled Upload Label */
+.upload-section {
+  margin: 15px 0;
+}
+#fileInput {
+  display: none;
+}
+
+.upload-label {
+  background: #b38b59;
+  color: #1a1a1a;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border: 2px solid #8e6d42;
+  transition: 0.3s;
+}
+
+.upload-label:hover {
+  background: #55efc4;
+  box-shadow: 0 0 15px rgba(85, 239, 196, 0.5);
+}
+
+/* Playlist Layout */
+.playlist-container {
+  width: 90%;
+  margin: 15px auto;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+h3 {
+  color: #b38b59;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #444;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+}
+ul {
+  list-style: none;
+  max-height: 100px;
+  overflow-y: auto;
+}
+li {
+  padding: 8px;
+  color: #ccc;
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+li:hover {
+  color: #55efc4;
+  background: rgba(255, 255, 255, 0.05);
+}
+li.active {
+  color: #fab1a0;
+  border-left: 3px solid #d63031;
+  background: rgba(179, 139, 89, 0.1);
+}
