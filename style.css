@@ -20,7 +20,7 @@ html {
   font-family: "Georgia", serif;
 }
 
-/* --- FIRE BACKGROUND --- */
+/* --- BACKGROUND ANIMATIONS --- */
 .fire-world {
   position: relative;
   width: 100vw;
@@ -107,7 +107,7 @@ html {
   }
 }
 
-/* --- TRADITIONAL DOJO PLAYER --- */
+/* --- PLAYER STYLING --- */
 .player-card {
   position: relative;
   z-index: 10;
@@ -116,9 +116,7 @@ html {
   background: var(--dark-wood);
   border: 3px solid var(--gold);
   border-radius: 20px;
-  box-shadow:
-    0 0 60px rgba(0, 0, 0, 0.9),
-    0 0 20px rgba(179, 139, 89, 0.2);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
   overflow: hidden;
 }
 
@@ -171,14 +169,12 @@ html {
   align-items: center;
   justify-content: center;
   font-size: 3.5rem;
-  box-shadow: inset 0 0 15px rgba(214, 48, 49, 0.2);
 }
 
 h2 {
   color: #fab1a0;
   font-size: 1.3rem;
   margin-bottom: 5px;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 p {
   color: var(--gold);
@@ -194,12 +190,13 @@ p {
   cursor: pointer;
 }
 
+/* CONTROLS & SPACING */
 .controls {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 35px; /* Added gap between controls and upload button */
 }
 
 .controls button {
@@ -220,23 +217,29 @@ p {
   box-shadow: 0 0 20px var(--gold);
 }
 
+.app-actions {
+  margin-bottom: 25px;
+}
+
 .btn-upload {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: 2px solid var(--gold);
   color: var(--gold);
   font-size: 0.8rem;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 20px;
+  background: rgba(179, 139, 89, 0.05);
   transition: 0.3s;
 }
 
 .btn-upload:hover {
   background: var(--gold);
   color: #000;
+  box-shadow: 0 0 15px var(--gold);
 }
+
 #fileInput {
   display: none;
 }
@@ -261,5 +264,4 @@ p {
 #playlistList li.active {
   color: var(--mint);
   border-left: 4px solid var(--crimson);
-  background: rgba(255, 255, 255, 0.03);
 }
