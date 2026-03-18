@@ -67,7 +67,7 @@ function togglePlay() {
 
 function playSong() {
   isPlaying = true;
-  playBtn.innerText = "Pause"; // Or use your ⏸ icon
+  playBtn.innerText = "||"; // Or use your ⏸ icon
   albumArt.style.animation = "spin 10s linear infinite"; // Start spinning
   audioSource.play();
   updateMediaMetadata();
@@ -75,7 +75,7 @@ function playSong() {
 
 function pauseSong() {
   isPlaying = false;
-  playBtn.innerText = "Play"; // Or use your ▶ icon
+  playBtn.innerText = "▶"; // Or use your ▶ icon
   albumArt.style.animationPlayState = "paused"; // Stop spinning
   audioSource.pause();
 }
