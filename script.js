@@ -6,6 +6,7 @@ const songTitle = document.getElementById("songTitle");
 const artistName = document.getElementById("artistName");
 const fileInput = document.getElementById("fileInput");
 const playlistList = document.getElementById("playlistList");
+const albumArt = document.getElementById("art");
 
 let playlist = [];
 let currentSongIndex = 0;
@@ -18,14 +19,14 @@ fileInput.addEventListener("change", (e) => {
   files.forEach((file) => {
     const blobURL = URL.createObjectURL(file);
     playlist.push({
-      name: file.name.replace(/\.[^/.]+$/, ""), // Remove file extension
+      name: file.name.replace(/\.[^/.]+$/, ""), // Remove .mp3 etc
       url: blobURL,
     });
   });
 
   updatePlaylistUI();
 
-  // Auto-play the first song if nothing is playing
+  // Auto-load first song if empty
   if (playlist.length > 0 && audioSource.src === "") {
     loadSong(0);
   }
@@ -55,6 +56,7 @@ function loadSong(index) {
   songTitle.innerText = playlist[index].name;
   artistName.innerText = "AV Music Slayer - Active Scroll";
 
+  updateMediaMetadata(); // Update Windows Media Info
   updatePlaylistUI();
 }
 
@@ -65,42 +67,61 @@ function togglePlay() {
 
 function playSong() {
   isPlaying = true;
-  playBtn.innerText = "⏸"; // Change icon to pause
+  playBtn.innerText = "Pause"; // Or use your ⏸ icon
+  albumArt.style.animation = "spin 10s linear infinite"; // Start spinning
   audioSource.play();
+  updateMediaMetadata();
 }
 
 function pauseSong() {
   isPlaying = false;
-  playBtn.innerText = "▶"; // Change icon to play
+  playBtn.innerText = "Play"; // Or use your ▶ icon
+  albumArt.style.animationPlayState = "paused"; // Stop spinning
   audioSource.pause();
 }
 
 function nextSong() {
   currentSongIndex++;
-  if (currentSongIndex >= playlist.length) {
-    currentSongIndex = 0; // Loop back to start
-  }
+  if (currentSongIndex >= playlist.length) currentSongIndex = 0;
   loadSong(currentSongIndex);
   playSong();
 }
 
 function prevSong() {
   currentSongIndex--;
-  if (currentSongIndex < 0) {
-    currentSongIndex = playlist.length - 1; // Loop to end
-  }
+  if (currentSongIndex < 0) currentSongIndex = playlist.length - 1;
   loadSong(currentSongIndex);
   playSong();
 }
 
+// --- WINDOWS MEDIA SESSION (Action Center Controls) ---
+function updateMediaMetadata() {
+  if ("mediaSession" in navigator && playlist[currentSongIndex]) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: playlist[currentSongIndex].name,
+      artist: "AV Music Slayer",
+      album: "Hinokami Kagura Collection",
+      artwork: [
+        { src: "images/av-icon.png", sizes: "512x512", type: "image/png" },
+      ],
+    });
+
+    // Enable Windows buttons
+    navigator.mediaSession.setActionHandler("play", playSong);
+    navigator.mediaSession.setActionHandler("pause", pauseSong);
+    navigator.mediaSession.setActionHandler("previoustrack", prevSong);
+    navigator.mediaSession.setActionHandler("nexttrack", nextSong);
+  }
+}
+
 // --- AUTOMATION & PROGRESS ---
 
-// 1. AUTO-NEXT: This fixes your issue!
+// Auto-Next Logic
 audioSource.addEventListener("ended", () => {
   nextSong();
 });
 
-// 2. Update Progress Bar
+// Progress Bar Update
 audioSource.addEventListener("timeupdate", () => {
   if (audioSource.duration) {
     const pct = (audioSource.currentTime / audioSource.duration) * 100;
@@ -108,16 +129,16 @@ audioSource.addEventListener("timeupdate", () => {
   }
 });
 
-// 3. Seek functionality
+// Seek Logic
 progress.addEventListener("input", () => {
   const seekTime = (progress.value / 100) * audioSource.duration;
   audioSource.currentTime = seekTime;
 });
 
-// --- KEYBOARD SHORTCUTS (Space to Play/Pause) ---
+// Keyboard Support
 window.addEventListener("keydown", (e) => {
   if (e.code === "Space") {
-    e.preventDefault(); // Stop page from scrolling
+    e.preventDefault();
     togglePlay();
   }
 });

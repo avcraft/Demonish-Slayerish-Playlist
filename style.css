@@ -169,6 +169,7 @@ html {
   align-items: center;
   justify-content: center;
   font-size: 3.5rem;
+  transition: all 0.5s ease;
 }
 
 h2 {
@@ -264,4 +265,13 @@ p {
 #playlistList li.active {
   color: var(--mint);
   border-left: 4px solid var(--crimson);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
